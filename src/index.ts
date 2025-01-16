@@ -69,8 +69,8 @@ export default {
 		const user = params.get('user') || 'anonymous';
 		const role = params.get('role') as Role || 'publisher';
 		const channel = params.get('channel') || 'ChatRoom';
-		const appID = params.get('appID') || env.appID;
-		const appCertificate = params.get('appCertificate') || env.appCertificate;
+		const appID = params.get('appID') || env.appID || '<<APP_ID>>';
+		const appCertificate = params.get('appCertificate') || env.appCertificate || '<<APP_CERT>>';
 
 		const expirationTtl = 60 * 60 * 24
 		const tokenConfig = {
