@@ -3,6 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2025-01-09"
 compatibility_flags = ["nodejs_compat_v2", "nodejs_als"]
 
+# routes = [
+#   { pattern = "agora.xxx.com", custom_domain = true },
+# ]
+
 [observability.logs]
 enabled = true
 invocation_logs = false

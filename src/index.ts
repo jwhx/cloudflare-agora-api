@@ -101,13 +101,17 @@ export default {
 		}
 		const updateOps = []
 
+		let newTokens = []
+
 		if (!RTC_TOKEN) {
 			RTC_TOKEN = generateRtcToken(tokenConfig)
 			updateOps.push(env.Agora.put(RTC_TOKEN_KEY, RTC_TOKEN, options))
+			newTokens.push("RTC_TOKEN")
 		}
 		if (!RTM_TOKEN) {
 			RTM_TOKEN = generateRtmToken(tokenConfig)
 			updateOps.push(env.Agora.put(RTM_TOKEN_KEY, RTM_TOKEN, options))
+			newTokens.push("RTM_TOKEN")
 		}
 
 		await Promise.allSettled(updateOps)
@@ -115,6 +119,7 @@ export default {
 		return new Response(JSON.stringify({
 			RTC_TOKEN,
 			RTM_TOKEN,
+			newTokens,
 			config: commonConfig,
 		}),
 			{
